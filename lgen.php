@@ -2,8 +2,8 @@
 	<head>
 		<title>L-Gen</title>
 		<meta charset="UTF-8">
-		<meta name="description" content="L-Gen - vkládání loga do obrázku">
-		<meta name="keywords" content="Obrázky, Watermark, Politika, Volby, ODS, STAN, Jihomoravský kraj">
+		<meta name="description" content="L-Gen - simple watermark generator">
+		<meta name="keywords" content="Images, Watermark, Programming, Demo, PHP">
 		<meta name="author" content="Alois Sečkár">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -15,7 +15,7 @@
 	
 	<body>
 	<?php
-		$message = "Vyberte obrázek pro vložení loga (JPG nebo PNG)";
+		$message = "Select image to be enhanced with logo (JPG or PNG)";
 		$alert_type = "alert-info";
 		$output = null;
 		$img_dir = "tmp/";
@@ -54,19 +54,19 @@
 						
 						$output = $target_file;
 						
-						$message = "Soubor ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " byl zpracován";
+						$message = "Image ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " was processed";
 						$alert_type = "alert-success";
 						
 					} else {
-						$message = "Při zpracování souboru došlo k chybě";
+						$message = "Error during processing image";
 						$alert_type = "alert-danger";
 					}
 				} else {
-					$message = "Soubor není obrázek povoleného typu (JPG nebo PNG)";
+					$message = "File isn't supported image format (JPG or PNG)";
 					$alert_type = "alert-danger";
 				}
 			} catch (Exception $e) {
-				$message = "Při zpracování souboru došlo k chybě";
+				$message = "Error during processing image";
 				$alert_type = "alert-danger";
 			} 
 		}
@@ -81,7 +81,7 @@
 			<div class="row">
 				<form class="form-inline" action="lgen.php" method="post" enctype="multipart/form-data">
 					<input type="file" name="fileToUpload" id="fileToUpload" style="display:none;" onchange="this.form.submit();" ondrag="this.form.submit();"/>
-					<label for="fileToUpload" id="img-area" ondrag="this.form.submit();">Kliknutím vyberte soubor</label>
+					<label for="fileToUpload" id="img-area" ondrag="this.form.submit();">Click to select file</label>
 				</form>
 			</div>
 			<hr />
